@@ -3,7 +3,7 @@ import TaskItem from './TaskItem';
 
 const TaskList = ({ tasks, toggleComplete, deleteTask }) => {
   return (
-    <ul className="list-group">
+    <div className="row">
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
@@ -12,7 +12,7 @@ const TaskList = ({ tasks, toggleComplete, deleteTask }) => {
           deleteTask={deleteTask}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 
