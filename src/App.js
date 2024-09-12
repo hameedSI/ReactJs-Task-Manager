@@ -6,17 +6,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const [tasks, setTasks] = useState([]);
 
-  // Load tasks from local storage when the app initializes
+  // Load tasks from local storage when the app initializes or set initial dummy data
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (storedTasks) {
+    if (storedTasks.length > 0) {
       setTasks(storedTasks);
-    }
+    } 
+   
   }, []);
-
-  // Save tasks to local storage when tasks change
+  
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    if (tasks.length > 0) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+   
   }, [tasks]);
 
   const addTask = (task) => {
